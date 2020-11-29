@@ -8,6 +8,7 @@ const App = () => {
     <div className="App">
       <Header />
       <Main />
+      <audio></audio>
     </div>
   );
 };
