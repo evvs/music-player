@@ -10,18 +10,20 @@
   }
   button {
     z-index: 10;
+    border-radius: 5%;
+    text-align: center;
     background-color: #1e1e1e;
     border: 1px solid white;
-    padding: 8px;
+    padding: 6px;
     transition: all 0.5s ease;
     &:hover,
     &:focus {
       background-color: lightblue;
       cursor: pointer;
+      outline: none;
     }
     svg {
-      font-size: 22px;
-      margin-right: 5px;
+      font-size: 18px;
     }
   }
 }

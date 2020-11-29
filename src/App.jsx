@@ -3,14 +3,12 @@ import './App.scss';
 import Header from './componets/Header';
 import Main from './componets/Main';
 
-const App = () => {
-  return (
-    <div className="App">
-      <Header />
-      <Main />
-      <audio></audio>
-    </div>
-  );
-};
+const App = () => (
+  <div className="App">
+    <Header />
+    <Main />
+    {/* <audio></audio> */}
+  </div>
+);
 
 export default App;

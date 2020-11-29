@@ -3,10 +3,9 @@
   padding: 0;
   box-sizing: border-box;
   color: white;
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   scrollbar-width: thin;
   scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
-   
 }
 
 img {
@@ -14,6 +13,8 @@ img {
   height: auto;
 }
 
-@import "./styles/header.scss";
-@import "./styles/main.scss";
-@import "./styles/song-info.scss";
+@import './styles/header.scss';
+@import './styles/main.scss';
+@import './styles/song-info.scss';
+@import './styles/player.scss';
+
