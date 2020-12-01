@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSong } from '../redux_slices/currentSong';
+import { setSongInfo, updateTimeInfo } from '../redux_slices/currentSong';
 
 const Audio = () => {
   const activeInPlaylist = useSelector(({ playlist }) => {
@@ -11,16 +11,22 @@ const Audio = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setSong({ ...activeInPlaylist }));
+    dispatch(setSongInfo({ ...activeInPlaylist }));
     console.log(activeInPlaylist);
   }, [activeInPlaylist, dispatch]);
 
-  const onLoadMeta = (e) => {
+  const updateTimeHandler = (e) => {
     const { duration, currentTime } = e.target;
-    dispatch(setSong({ duration, currentTime }));
+    dispatch(updateTimeInfo({ duration, currentTime }));
   };
 
-  return <audio src={activeInPlaylist.src} onLoadedMetadata={onLoadMeta} />;
+  return (
+    <audio
+      src={activeInPlaylist.src}
+      onLoadedMetadata={updateTimeHandler}
+      onTimeUpdate={updateTimeHandler}
+    />
+  );
 };
 
 export default Audio;

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -17,10 +18,14 @@ const currentSongSlice = createSlice({
   name: 'playlist',
   initialState,
   reducers: {
-    setSong: (state, { payload }) => ({ ...state, ...payload }),
+    setSongInfo: (state, { payload }) => ({ ...state, ...payload }),
+    updateTimeInfo: (state, { payload }) => {
+      state.duration = payload.duration;
+      state.currentTime = payload.currentTime;
+    },
   },
 });
 
-export const { setSong } = currentSongSlice.actions;
+export const { setSongInfo, updateTimeInfo } = currentSongSlice.actions;
 
 export default currentSongSlice.reducer;
