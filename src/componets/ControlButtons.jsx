@@ -5,11 +5,12 @@ import {
   faPlay,
   faStepBackward,
 } from '@fortawesome/free-solid-svg-icons';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { setSong } from '../redux_slices/currentSong';
+import { useDispatch } from 'react-redux';
+import { playToggle } from '../redux_slices/currentSong';
 
 const ControlButtons = () => {
-  const onPlayHandler = () => {};
+  const dispath = useDispatch();
+  const onPlayHandler = () => dispath(playToggle());
 
   return (
     <div className="controls">
