@@ -2,15 +2,12 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSongInfo, updateTimeInfo } from '../redux_slices/currentSong';
+import { switchSong } from '../redux_slices/playlist';
 
 const Audio = () => {
-  const activeInPlaylist = useSelector(({ playlist }) => {
-    const activeSong = playlist.data.find((song) => song.active);
-    return activeSong;
-  });
+  const activeInPlaylist = useSelector(({ playlist }) => playlist.data.find((song) => song.active));
   const isPlaying = useSelector((state) => state.currentSong.isPlaying);
   const dragValue = useSelector((state) => state.currentSong.dragValue);
-
   const dispatch = useDispatch();
   const songRef = useRef('');
 
@@ -32,12 +29,17 @@ const Audio = () => {
     dispatch(updateTimeInfo({ duration, currentTime }));
   };
 
+  const songEndHandler = () => {
+    dispatch(switchSong('forward'));
+  };
+
   return (
     <audio
       ref={songRef}
       src={activeInPlaylist.src}
       onLoadedMetadata={updateTimeHandler}
       onTimeUpdate={updateTimeHandler}
+      onEnded={songEndHandler}
     />
   );
 };
