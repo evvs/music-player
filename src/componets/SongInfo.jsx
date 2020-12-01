@@ -8,7 +8,17 @@ const SongInfo = () => {
 
   return (
     <div className="_song-info">
-      <img src={cover} className="logo" alt="cover" width="250" height="250" />
+      {cover ? (
+        <img
+          src={cover}
+          className="logo"
+          alt="cover"
+          width="250"
+          height="250"
+        />
+      ) : (
+        'Loading'
+      )}
       <h2>{name}</h2>
       <h3>{artist}</h3>
     </div>

@@ -9,21 +9,23 @@ const Audio = () => {
     return activeSong;
   });
   const isPlaying = useSelector((state) => state.currentSong.isPlaying);
+  const dragValue = useSelector((state) => state.currentSong.dragValue);
 
   const dispatch = useDispatch();
   const songRef = useRef('');
 
   useEffect(() => {
     dispatch(setSongInfo({ ...activeInPlaylist }));
-    console.log(activeInPlaylist);
-  }, [activeInPlaylist, dispatch]);
 
-  useEffect(() => {
     if (isPlaying) songRef.current.play();
     else {
       songRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [activeInPlaylist, isPlaying, dispatch]);
+
+  useEffect(() => {
+    songRef.current.currentTime = dragValue;
+  }, [dragValue]);
 
   const updateTimeHandler = (e) => {
     const { duration, currentTime } = e.target;

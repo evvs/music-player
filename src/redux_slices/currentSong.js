@@ -12,6 +12,7 @@ const initialState = {
   duration: 0,
   currentTime: 0,
   isPlaying: false,
+  dragValue: 0,
 };
 
 const currentSongSlice = createSlice({
@@ -26,9 +27,17 @@ const currentSongSlice = createSlice({
     playToggle: (state) => {
       state.isPlaying = !state.isPlaying;
     },
+    changeDragValue: (state, { payload }) => {
+      state.dragValue = payload;
+    },
   },
 });
 
-export const { setSongInfo, updateTimeInfo, playToggle } = currentSongSlice.actions;
+export const {
+  setSongInfo,
+  updateTimeInfo,
+  playToggle,
+  changeDragValue,
+} = currentSongSlice.actions;
 
 export default currentSongSlice.reducer;
