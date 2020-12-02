@@ -25,8 +25,14 @@ const playlistSlice = createSlice({
         ].active = true;
       }
     },
+    libriarySwitchSong: ({ data }, { payload }) => {
+      const activeSongIndex = data.findIndex((song) => song.active);
+      const clickedSongIndex = data.findIndex((song) => payload === song.id);
+      data[activeSongIndex].active = false;
+      data[clickedSongIndex].active = true;
+    },
   },
 });
 
-export const { switchSong } = playlistSlice.actions;
+export const { switchSong, libriarySwitchSong } = playlistSlice.actions;
 export default playlistSlice.reducer;

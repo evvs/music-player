@@ -16,7 +16,7 @@ const initialState = {
 };
 
 const currentSongSlice = createSlice({
-  name: 'playlist',
+  name: 'currentSong',
   initialState,
   reducers: {
     setSongInfo: (state, { payload }) => ({ ...state, ...payload }),

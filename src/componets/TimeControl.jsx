@@ -9,6 +9,7 @@ const calculateAnimationPercentage = (currentTime, duration) => Math.round((curr
 const TimeControl = () => {
   const duration = useSelector((state) => state.currentSong.duration);
   const currentTime = useSelector((state) => state.currentSong.currentTime);
+  const color = useSelector((state) => state.currentSong.color);
   const dispatch = useDispatch();
   const formatedDuration = formatTime(duration);
   const formatedCurrentTime = formatTime(currentTime);
@@ -25,8 +26,14 @@ const TimeControl = () => {
   return (
     <div className="time_control">
       <p>{formatedCurrentTime}</p>
-      <div className="slideContainer">
-        <input type="range" min={0} max={duration || 0} value={currentTime} onChange={onDragHandler} />
+      <div className="slideContainer" style={{ background: `${color}` }}>
+        <input
+          type="range"
+          min={0}
+          max={duration || 0}
+          value={currentTime}
+          onChange={onDragHandler}
+        />
         <div style={{ transform: `translateX(${animationPercentage}%)` }} />
       </div>
       <p>{duration ? formatedDuration : '0:00'}</p>
