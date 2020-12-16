@@ -1,2 +1,3 @@
-Music player with react redux
+Music player with react redux 🎧
+
 https://music-player.vercel.app/
